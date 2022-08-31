@@ -1,0 +1,25 @@
+.Header {
+  position:absolute;
+  margin-left:auto;
+  margin-right:auto;
+  left: 0;
+  right: 0;
+  width:50%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+
+  &__Title {
+    font-size: 2rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0rem;
+  }
+
+  &__sub {
+    margin-top: 0.2rem;
+    font-size: 1rem;
+  }
+}
