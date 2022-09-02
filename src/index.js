@@ -4,18 +4,29 @@ import './index.scss';
 import Header from './components/Header/Header';
 import Background from './components/Background/Background';
 import reportWebVitals from './reportWebVitals';
+import Selector from './components/Selector/Selector';
+import Visualizer from './components/Visualizer/Visualizer';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <div>
-    <Background/>
-    <Header/>
-  </div>
 
-  // <div className="Main">
-  //   <Selector/>
-  //   <Visualizer/>
-  // </div>
+    <div>
+      <Background/>
+    </div>
+
+    <div>
+      <div>
+        <Header/>
+      </div>
+
+      <div className="sv">
+        <Selector/>
+        <Visualizer/>
+      </div>
+    </div>
+
+  </div>
 
 );
 

@@ -1,0 +1,31 @@
+.Selector {
+    border-radius: 2rem;
+    border-style: solid;
+    border-color: white;
+    width: 30%;
+    margin-left: auto;
+    background: white;
+    margin-right: 1rem;
+    padding: 2rem;
+
+    &__Instructions{
+        color: white;
+
+        &__Heading{
+            margin-top: 0px;
+        }
+    }
+
+    // &__DropDown{
+    //     display: flex;
+    //     align-items: center;
+    //     justify-content: center;
+    // }
+
+    &__Button{
+
+        &__Sort{
+        margin-left: 1rem;
+        }
+    }
+}
