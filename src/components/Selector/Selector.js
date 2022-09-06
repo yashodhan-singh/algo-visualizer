@@ -1,4 +1,5 @@
 import './Selector.scss';
+import Button from '@mui/material/Button';
 import Slider from '../Slider/Slider';
 
 function Selector(){
@@ -31,7 +32,7 @@ function Selector(){
                         <option value = "InsertionSort"> Insertion Sort </option>
                     </optgroup>
                 </select>
-                <button className="Selector__Button__Sort" type="button"> Go </button>
+                <Button className="Selector__Button__Sort" variant="outlined"> Go </Button>
             </div>
         </div>
     );
