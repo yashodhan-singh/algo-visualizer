@@ -26,13 +26,14 @@ function Selector(){
             <div className = "Selector__DropDownBox">
                 <Box sx={{ minWidth: 250 }}>
                     <FormControl fullWidth size="small">
-                        <InputLabel id="demo-simple-select-label">Algorithm</InputLabel>
+                        <InputLabel>Choose Algorithm</InputLabel>
                         <Select 
                             labelId="demo-simple-select-label"
                             id="demo-simple-select"
                             value={algo}
-                            label="Algorithm"
+                            label="Choose Algorithm"
                             onChange={handleChange}
+                            align="left"
                             >
                             <ListSubheader>Sort Algorithms</ListSubheader>
                             <MenuItem value={1}>Binary Sort</MenuItem>
