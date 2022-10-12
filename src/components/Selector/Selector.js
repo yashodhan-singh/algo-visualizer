@@ -1,28 +1,72 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
-import Button from '@mui/material/Button';
-import Slider from '../Slider/Slider';
-import ListSubheader from '@mui/material/ListSubheader';
+import { Grid, Select, Button, ListSubheader, FormControl, MenuItem, InputLabel, Box, Typography, Slider, Input } from '@mui/material';
 import './Selector.scss';
-
+import { visualizeAlgo } from '../Visualizer/Visualizer';
 
 function Selector(){
 
     const [algo, setAlgo] = React.useState('');
+    const [arraySize, setArraySize] = React.useState('');
+
+    const handleSliderChange = (event, newValue) => {
+        setArraySize(newValue);
+    }
 
     const handleChange = (event) => {
         setAlgo(event.target.value);
     };
 
+    const handleInputChange = (event) => {
+        setArraySize(event.target.value === "" ? "" : Number(event.target.value));
+    }
+
+    const handleBlur = () => {
+        if (arraySize < 0) {
+            setArraySize(0);
+        } else if (arraySize > 100) {
+            setArraySize(100);
+        }
+    };
+
     return(
         <div className = "Selector__Box">
             <div>
-                <Slider/>
+                <Typography id="input-slider">
+                    What would you like to visualize?
+                </Typography>
             </div>
+            <Box marginLeft="3.7rem" marginRight="3.7rem" paddingBottom="1rem" paddingTop="1rem">
+                <Grid container spacing = {2} alignItems = "center">
+                    <Grid item xs>
+                        <Slider
+                            value = {typeof arraySize === "number" ? arraySize : 0}
+                            onChange = {handleSliderChange}
+                            aria-labelledby="input-slider"
+                            max = "100"
+                        />
+                    </Grid>
+                    <Grid item>
+                        <Input
+                            className='arraySizeInput'
+                            value = {arraySize}
+                            onChange={handleInputChange}
+                            onBlur={handleBlur}
+                            inputProps={{
+                                step: 1,
+                                min:0,
+                                max: 100,
+                                type:"number",
+                                "aria-labelledby" : "input-slider"
+                            }}
+                        />
+                    </Grid>
+                    <Grid item>
+                        <Typography id="input-slider">
+                            elements
+                        </Typography>
+                    </Grid>
+                </Grid>
+            </Box>
             <div className = "Selector__DropDownBox">
                 <Box sx={{ minWidth: 250 }}>
                     <FormControl fullWidth size="small">
@@ -46,7 +90,7 @@ function Selector(){
                     </FormControl>
                 </Box>
                 <div className ="Selector__Spacer"></div>
-                <Button className="Selector__SortButton" left="1rem" variant="outlined" sx = {{ height: 40}}> Go </Button>
+                <Button onClick={() => {visualizeAlgo(arraySize, algo)}} className="Selector__SortButton" left="1rem" variant="outlined" sx = {{ height: 40}}> Go </Button>
             </div>
         </div>
     );

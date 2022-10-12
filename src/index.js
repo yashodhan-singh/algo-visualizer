@@ -6,7 +6,6 @@ import Background from './components/Background/Background';
 import reportWebVitals from './reportWebVitals';
 import Selector from './components/Selector/Selector';
 import Visualizer from './components/Visualizer/Visualizer';
-//import NavBar from './components/NavBar/NavBar';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -15,10 +14,6 @@ root.render(
     <div>
       <Background/>
     </div>
-
-    {/* <div>
-      <NavBar/>
-    </div> */}
 
     <div>
       <div>
