@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Grid, Select, Button, ListSubheader, FormControl, MenuItem, InputLabel, Box, Typography, Slider, Input } from '@mui/material';
 import './Selector.scss';
-import { visualizeAlgo } from '../Visualizer/Visualizer';
 
 function Selector(){
 
@@ -90,10 +89,14 @@ function Selector(){
                     </FormControl>
                 </Box>
                 <div className ="Selector__Spacer"></div>
-                <Button onClick={() => {visualizeAlgo(arraySize, algo)}} className="Selector__SortButton" left="1rem" variant="outlined" sx = {{ height: 40}}> Go </Button>
+                <Button className="Selector__SortButton" left="1rem" variant="outlined" sx = {{ height: 40}}> Go </Button>
             </div>
         </div>
     );
 }
 
 export default Selector;
+
+//we have the algo, now create a display for the java code for the algo below both of the elements
+//reformat our display to be 1 element per line i.e. mobile responsive
+

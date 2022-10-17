@@ -4,8 +4,7 @@ import './index.scss';
 import Header from './components/Header/Header';
 import Background from './components/Background/Background';
 import reportWebVitals from './reportWebVitals';
-import Selector from './components/Selector/Selector';
-import Visualizer from './components/Visualizer/Visualizer';
+import AlgoVisualizer from './components/AlgoVisualizer/AlgoVisualizer';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -20,9 +19,8 @@ root.render(
         <Header/>
       </div>
 
-      <div className="sv">
-        <Selector/>
-        <Visualizer/>
+      <div>
+        <AlgoVisualizer/>
       </div>
     </div>
 
