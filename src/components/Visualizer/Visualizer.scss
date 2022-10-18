@@ -1,11 +1,23 @@
 .Visualizer {
-    border-radius: 2rem;
-    border-style: solid;
-    border-color: white;
-    color: rgb(0, 0, 0);
-    width: 50%;
-    margin-right:auto;
-    background: white;
-    margin-left: 1rem;
-    padding: 2rem;
+
+    &__Box{
+        border-radius: 2rem;
+        border-style: solid;
+        border-color: white;
+        color: rgb(0, 0, 0);
+        width: 50%;
+        margin-right:auto;
+        background: white;
+        margin-left: 1rem;
+        padding: 2rem;
+    }
+
+    &__Bars{
+        display: flex;
+        flex-direction: row;
+        margin-left: 20px;
+        margin-right: 20px;
+        margin-top:20px;
+    }
+
 }

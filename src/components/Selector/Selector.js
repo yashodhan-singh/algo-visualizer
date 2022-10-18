@@ -2,21 +2,24 @@ import * as React from 'react';
 import { Grid, Select, Button, ListSubheader, FormControl, MenuItem, InputLabel, Box, Typography, Slider, Input } from '@mui/material';
 import './Selector.scss';
 
-function Selector(){
-
+export default function Selector({ setVisualizerProps }){
+    
     const [algo, setAlgo] = React.useState('');
     const [arraySize, setArraySize] = React.useState('');
-
+    
     const handleSliderChange = (event, newValue) => {
         setArraySize(newValue);
+        setVisualizerProps([algo, newValue])
     }
 
     const handleChange = (event) => {
         setAlgo(event.target.value);
-    };
+        setVisualizerProps([event.target.value, arraySize])
+    }
 
     const handleInputChange = (event) => {
         setArraySize(event.target.value === "" ? "" : Number(event.target.value));
+        setVisualizerProps([event.target.value, arraySize])
     }
 
     const handleBlur = () => {
@@ -26,7 +29,7 @@ function Selector(){
             setArraySize(100);
         }
     };
-
+    
     return(
         <div className = "Selector__Box">
             <div>
@@ -89,13 +92,14 @@ function Selector(){
                     </FormControl>
                 </Box>
                 <div className ="Selector__Spacer"></div>
-                <Button className="Selector__SortButton" left="1rem" variant="outlined" sx = {{ height: 40}}> Go </Button>
+                <Button onClick={() => {
+                    setVisualizerProps([algo, arraySize]);
+                }}
+                    className="Selector__SortButton" left="1rem" variant="outlined" sx = {{ height: 40}}> Go </Button>
             </div>
         </div>
     );
 }
-
-export default Selector;
 
 //we have the algo, now create a display for the java code for the algo below both of the elements
 //reformat our display to be 1 element per line i.e. mobile responsive

@@ -3,17 +3,15 @@ import Selector from "../Selector/Selector";
 import Visualizer from "../Visualizer/Visualizer";
 import React from 'react';
 
-class AlgoVisualizer extends React.Component {
+export default function AlgoVisualizer(){
+    
+    const [visualizerProps, setVisualizerProps] = React.useState('')
 
-    state = { data: [10, 1] }
+    return (
+        <div className="AlgoVisualizer">
+            <Selector setVisualizerProps = {setVisualizerProps}/>
+            <Visualizer visualizerProps = {visualizerProps}/>
+        </div>
+    )
 
-    render(){
-        return (
-            <div className="AlgoVisualizer">
-                <Selector/>
-                <Visualizer dataFromParent = {this.state.data}/>
-            </div>
-        )
-    }
 }
- export default AlgoVisualizer;
