@@ -10,8 +10,8 @@ export default function Visualizer({ visualizerProps }){
     const algoNames = ["", "Binary Sort", "Merge Sort", "Heap Sort", "Bubble Sort", "Binary Search"]
     const bars = []
 
-    for(let i = 0; i<arraySize; i++){
-        bars.push(<Bar key={i}/>)
+    for(let i = 1; i<=arraySize; i++){
+        bars.push(<Bar barHeight={i} barkey={i}/>)
     }
 
     return(

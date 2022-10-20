@@ -13,5 +13,4 @@ export default function AlgoVisualizer(){
             <Visualizer visualizerProps = {visualizerProps}/>
         </div>
     )
-
 }

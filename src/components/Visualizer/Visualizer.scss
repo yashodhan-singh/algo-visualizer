@@ -14,10 +14,10 @@
 
     &__Bars{
         display: flex;
-        flex-direction: row;
-        margin-left: 20px;
-        margin-right: 20px;
-        margin-top:20px;
+        align-items:flex-end;
+        margin: 20px;
+        outline-color: white;
+        outline-style: solid;
     }
 
 }

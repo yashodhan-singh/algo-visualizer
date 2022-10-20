@@ -4,8 +4,8 @@ import './Selector.scss';
 
 export default function Selector({ setVisualizerProps }){
     
-    const [algo, setAlgo] = React.useState('');
-    const [arraySize, setArraySize] = React.useState('');
+    const [algo, setAlgo] = React.useState(1);
+    const [arraySize, setArraySize] = React.useState(10);
     
     const handleSliderChange = (event, newValue) => {
         setArraySize(newValue);
@@ -18,17 +18,21 @@ export default function Selector({ setVisualizerProps }){
     }
 
     const handleInputChange = (event) => {
-        setArraySize(event.target.value === "" ? "" : Number(event.target.value));
-        setVisualizerProps([event.target.value, arraySize])
+        setArraySize(event.target.value);
+        setVisualizerProps([algo, event.target.value])
     }
 
     const handleBlur = () => {
-        if (arraySize < 0) {
-            setArraySize(0);
-        } else if (arraySize > 100) {
-            setArraySize(100);
+        if (arraySize < 1) {
+            setArraySize(1);
+        } else if (arraySize > 25) {
+            setArraySize(25);
         }
     };
+
+    const randomizeBars = (event) => {
+
+    }
     
     return(
         <div className = "Selector__Box">
@@ -44,7 +48,8 @@ export default function Selector({ setVisualizerProps }){
                             value = {typeof arraySize === "number" ? arraySize : 0}
                             onChange = {handleSliderChange}
                             aria-labelledby="input-slider"
-                            max = "100"
+                            min={1}
+                            max={25}
                         />
                     </Grid>
                     <Grid item>
@@ -55,8 +60,8 @@ export default function Selector({ setVisualizerProps }){
                             onBlur={handleBlur}
                             inputProps={{
                                 step: 1,
-                                min:0,
-                                max: 100,
+                                min: 1,
+                                max: 25,
                                 type:"number",
                                 "aria-labelledby" : "input-slider"
                             }}
@@ -69,6 +74,11 @@ export default function Selector({ setVisualizerProps }){
                     </Grid>
                 </Grid>
             </Box>
+            <div className="Selector_RandomizeButtonHolder" style={{ marginBottom: 30}}>
+                <Button onClick={() => {
+                    randomizeBars()
+                }} className="Selector__RandomizeButton" variant="outlined" sx = {{ height: 40, width:335}}> Randomize </Button>
+            </div>
             <div className = "Selector__DropDownBox">
                 <Box sx={{ minWidth: 250 }}>
                     <FormControl fullWidth size="small">
@@ -94,8 +104,7 @@ export default function Selector({ setVisualizerProps }){
                 <div className ="Selector__Spacer"></div>
                 <Button onClick={() => {
                     setVisualizerProps([algo, arraySize]);
-                }}
-                    className="Selector__SortButton" left="1rem" variant="outlined" sx = {{ height: 40}}> Go </Button>
+                }} className="Selector__SortButton" left="1rem" variant="outlined" sx = {{ height: 40}}> Go </Button>
             </div>
         </div>
     );
