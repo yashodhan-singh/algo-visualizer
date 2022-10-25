@@ -29,10 +29,6 @@ export default function Selector({ setVisualizerProps }){
             setArraySize(25);
         }
     };
-
-    const randomizeBars = (event) => {
-
-    }
     
     return(
         <div className = "Selector__Box">
@@ -76,7 +72,6 @@ export default function Selector({ setVisualizerProps }){
             </Box>
             <div className="Selector_RandomizeButtonHolder" style={{ marginBottom: 30}}>
                 <Button onClick={() => {
-                    randomizeBars()
                 }} className="Selector__RandomizeButton" variant="outlined" sx = {{ height: 40, width:335}}> Randomize </Button>
             </div>
             <div className = "Selector__DropDownBox">
