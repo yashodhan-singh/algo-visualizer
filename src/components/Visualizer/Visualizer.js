@@ -6,12 +6,13 @@ import Bar from '../Bar/Bar';
 export default function Visualizer({ visualizerProps }){
 
     const algo = visualizerProps[0];
-    const arraySize = visualizerProps[1]
+    const arraySize = visualizerProps[1];
+    const barHeights = visualizerProps[2];
     const algoNames = ["", "Binary Sort", "Merge Sort", "Heap Sort", "Bubble Sort", "Binary Search"]
     const bars = []
 
-    for(let i = 1; i<=arraySize; i++){
-        bars.push(<Bar barHeight={i} barkey={i}/>)
+    for(let i = 0; i<arraySize; i++){
+        bars.push(<Bar barHeight={barHeights[i]}/>)
     }
 
     return(

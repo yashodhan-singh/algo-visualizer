@@ -2,24 +2,28 @@ import * as React from 'react';
 import { Grid, Select, Button, ListSubheader, FormControl, MenuItem, InputLabel, Box, Typography, Slider, Input } from '@mui/material';
 import './Selector.scss';
 
+
 export default function Selector({ setVisualizerProps }){
     
     const [algo, setAlgo] = React.useState(1);
     const [arraySize, setArraySize] = React.useState(10);
+    const [barHeights, setBarHeights] = React.useState([]);
     
     const handleSliderChange = (event, newValue) => {
         setArraySize(newValue);
-        setVisualizerProps([algo, newValue])
-    }
-
-    const handleChange = (event) => {
-        setAlgo(event.target.value);
-        setVisualizerProps([event.target.value, arraySize])
+        setVisualizerProps([algo, newValue, barHeights])
+        setUpBars()
     }
 
     const handleInputChange = (event) => {
         setArraySize(event.target.value);
-        setVisualizerProps([algo, event.target.value])
+        setVisualizerProps([algo, event.target.value, barHeights])
+        setUpBars()
+    }
+
+    const handleChange = (event) => {
+        setAlgo(event.target.value);
+        setVisualizerProps([event.target.value, arraySize, barHeights])
     }
 
     const handleBlur = () => {
@@ -28,7 +32,19 @@ export default function Selector({ setVisualizerProps }){
         } else if (arraySize > 25) {
             setArraySize(25);
         }
-    };
+    }
+
+    const setUpBars = () => {
+        for(let k = 0; k <= arraySize; k++){
+            barHeights[k] = k + 1;
+        }
+    }
+
+    const randomizeBars = () => {
+        const randomized = barHeights.sort(() => Math.random() - 0.5)
+        setBarHeights(randomized)
+        setVisualizerProps([algo, arraySize, barHeights])
+    }
     
     return(
         <div className = "Selector__Box">
@@ -41,7 +57,7 @@ export default function Selector({ setVisualizerProps }){
                 <Grid container spacing = {2} alignItems = "center">
                     <Grid item xs>
                         <Slider
-                            value = {typeof arraySize === "number" ? arraySize : 0}
+                            value = {arraySize}
                             onChange = {handleSliderChange}
                             aria-labelledby="input-slider"
                             min={1}
@@ -71,8 +87,7 @@ export default function Selector({ setVisualizerProps }){
                 </Grid>
             </Box>
             <div className="Selector_RandomizeButtonHolder" style={{ marginBottom: 30}}>
-                <Button onClick={() => {
-                }} className="Selector__RandomizeButton" variant="outlined" sx = {{ height: 40, width:335}}> Randomize </Button>
+                <Button onClick={randomizeBars} className="Selector__RandomizeButton" variant="outlined" sx = {{ height: 40, width:335}}> Randomize </Button>
             </div>
             <div className = "Selector__DropDownBox">
                 <Box sx={{ minWidth: 250 }}>
@@ -98,7 +113,7 @@ export default function Selector({ setVisualizerProps }){
                 </Box>
                 <div className ="Selector__Spacer"></div>
                 <Button onClick={() => {
-                    setVisualizerProps([algo, arraySize]);
+                    setVisualizerProps([algo, arraySize, barHeights]);
                 }} className="Selector__SortButton" left="1rem" variant="outlined" sx = {{ height: 40}}> Go </Button>
             </div>
         </div>
