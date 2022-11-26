@@ -24,6 +24,7 @@ export default function Visualizer({ visualizerProps }){
             </div>
             <div className="Visualizer__Bars">
                 {bars}
+                <div className="Bar" style={{height: 114, backgroundColor: "white"}}></div>
             </div>
         </div>
     );    
